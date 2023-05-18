@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: track
+  template:
+    metadata:
+      labels:
+        app: track
+    spec:
+      containers:
+        - name: track
+          image: dleo/track
+          ports:
+            - containerPort: 5000
+          # env:
+          #   - name: MONGO_URI
+          #     value: "mongodb://mongodb-track:27017/tracks"
+      imagePullSecrets:
+        - name: docker-hub
+      volumeMounts:
+        - name: mongo-data-track
+          mountPath: /data/db
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: track
+  labels:
+    app: track
+spec:
+  type: ClusterIP
+  selector:
+    app: track
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
