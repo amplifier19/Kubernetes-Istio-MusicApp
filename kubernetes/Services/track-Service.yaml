@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: track
+  labels:
+    app: track
+spec:
+  type: ClusterIP
+  selector:
+    app: track
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: track
+  template:
+    metadata:
+      labels:
+        app: track
+    spec:
+      containers:
+        - name: track
+          image: dimleo/track
+          ports:
+            - containerPort: 5000
+      restartPolicy: Always
+

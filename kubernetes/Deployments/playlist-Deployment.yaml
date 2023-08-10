@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playlist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playlist
+  template:
+    metadata:
+      labels:
+        app: playlist
+    spec:
+      containers:
+        - name: playlist
+          image: dimleo/playlist
+          ports:
+            - containerPort: 4000
+      restartPolicy: Always

@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: track-mtls
+spec:
+  host: track.homelabamplifier.com
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

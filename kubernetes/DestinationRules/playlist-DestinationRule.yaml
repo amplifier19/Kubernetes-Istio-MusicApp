@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: playlist-mtls
+spec:
+  host: playlist.homelabamplifier.com
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

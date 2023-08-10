@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+data:
+  web.properties: |
+      window.playlistURL = "https://playlist.homelabamplifier.com";
+      window.trackURL = "https://track.homelabamplifier.com";

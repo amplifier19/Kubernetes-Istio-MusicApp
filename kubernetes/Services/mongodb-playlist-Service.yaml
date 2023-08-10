@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-playlist
+  labels:
+    app: mongodb-playlist
+spec:
+  clusterIP: None
+  selector:
+    app: mongodb-playlist
+  ports:
+    - port: 27017
+      targetPort: 27017
