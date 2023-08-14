@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - pip.homelabamplifier.com
+  - homelabamplifier.com
   gateways:
   - piplib-gateway
   http:
