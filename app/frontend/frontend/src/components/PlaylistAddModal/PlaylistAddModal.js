@@ -33,6 +33,7 @@ export const PlaylistAddModal = ({ setPlaylistAddModal, setPlaylistAdded, allPla
                                 name='name'
                                 value={data.name}
                                 onChange={(e) => setData({ ...data, [e.target.name]: e.target.value })}
+                                required
                             />
                         </div>
                         <div className="field">
