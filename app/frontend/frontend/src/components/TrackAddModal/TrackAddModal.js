@@ -34,6 +34,7 @@ export const AddTrackModal = ({ setTrackAddModal, setTrackAdded, allPlaylists, c
                                 name='name'
                                 value={data.name}
                                 onChange={(e) => setData({ ...data, [e.target.name]: e.target.value })}
+                                required
                             />
                         </div>
                         <div className="field">
@@ -54,6 +55,8 @@ export const AddTrackModal = ({ setTrackAddModal, setTrackAdded, allPlaylists, c
                                 name='link'
                                 value={data.link}
                                 onChange={(e) => setData({ ...data, [e.target.name]: e.target.value })}
+                                placeholder="Only track ID in link"
+                                required
                             />
                         </div>
                         <div className="field">
