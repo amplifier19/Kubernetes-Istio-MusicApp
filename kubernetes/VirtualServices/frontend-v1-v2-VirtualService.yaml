@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - homelabamplifier.com
+  gateways:
+  - piplib-gateway
+  http:
+  - route:
+    - destination:
+        host: frontend.default.svc.cluster.local
+        port:
+          number: 3000
+        subset: v1
+      weight: 30
+    - destination:
+        host: frontend.default.svc.cluster.local
+        port:
+          number: 3000
+        subset: v2
+      weight: 70

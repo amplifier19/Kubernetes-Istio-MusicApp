@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-v1
+  labels:
+    app: frontend
+    version: v1
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: frontend
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v1
+    spec:
+      containers:
+        - name: frontend
+          image: dimleo/frontend:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/config.js
+              name: config-volume
+              subPath: config.js
+      volumes:
+        - name: config-volume
+          configMap:
+            name: frontend-config
+            items:
+              - key: web.properties
+                path: config.js
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-v2
+  labels:
+    app: frontend
+    version: v2
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: frontend
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v2
+    spec:
+      containers:
+        - name: frontend
+          image: dimleo/frontend:v2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/config.js
+              name: config-volume
+              subPath: config.js
+      volumes:
+        - name: config-volume
+          configMap:
+            name: frontend-config
+            items:
+              - key: web.properties
+                path: config.js

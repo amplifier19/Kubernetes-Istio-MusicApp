@@ -4,6 +4,7 @@ metadata:
   name: frontend
   labels:
     app: frontend
+    service: frontend
 spec:
   type: ClusterIP
   selector:

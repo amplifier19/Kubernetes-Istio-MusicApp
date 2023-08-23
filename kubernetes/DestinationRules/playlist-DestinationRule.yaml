@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: playlist-mtls
 spec:
-  host: playlist.homelabamplifier.com
+  host: playlist.default.svc.cluster.local
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL

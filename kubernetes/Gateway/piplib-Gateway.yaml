@@ -16,3 +16,4 @@ spec:
         credentialName: gateway-credential
       hosts:
         - '*'
+

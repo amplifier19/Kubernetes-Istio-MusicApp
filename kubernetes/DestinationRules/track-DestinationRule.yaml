@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: track-mtls
 spec:
-  host: track.homelabamplifier.com
+  host: track.default.svc.cluster.local
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL

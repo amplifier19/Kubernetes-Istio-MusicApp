@@ -5,7 +5,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: dimleo/frontend6
+          image: dimleo/frontend:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
